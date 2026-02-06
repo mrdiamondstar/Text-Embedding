@@ -1,15 +1,31 @@
-Steps to follow and for understading of the code
-# 1. SETUP
-# Replace with your actual key if not using environment variables
-# 2. THE DATA
-# We have 3 sentences. Two are about animals, one is about finance.
-# 3. GET VECTORS (The 1536 numbers)
-# We ask OpenAI to turn text into numbers
-# Extract the actual lists of numbers
-# 4. DO THE MATH (Cosine Similarity)
-# We compare Vector 1 (Cat) against the other two.
-# Note: We wrap them in [ ] to make them 2D arrays, which the library expects.
-# 5. PRINT RESULTS
-# EXPECTED OUTPUT LOGIC
-# Cat vs Kitten should be HIGH (e.g., 0.50 - 0.70)
-# Cat vs Stocks should be LOW  (e.g., 0.10 - 0.20)
+1️ Import libraries for environment access, numerical computation, vector search, and embeddings.
+
+2️ Initialize the OpenAI client using the API key from environment variables.
+
+3️ Define a list of sentences that will act as the searchable knowledge base.
+
+4️ Create an empty list to store embedding vectors.
+
+5️ Convert each sentence into a semantic embedding using the OpenAI model.
+
+6️ Convert the list of embeddings into a float32 NumPy matrix for FAISS.
+
+7️ Extract the embedding vector dimension required to build the index.
+
+8️ Create a FAISS vector index using L2 distance for similarity comparison.
+
+9️ Add all sentence embeddings to the FAISS index.
+
+ Define a new query sentence to search for similar meaning.
+
+1️1️ Generate an embedding for the query using the same embedding model.
+
+1️2️ Convert the query embedding into a FAISS-compatible NumPy vector.
+
+1️3️ Specify how many nearest matches should be returned.
+
+1️4️ Perform a similarity search in FAISS to find closest embeddings.
+
+1️5️ Print the query and a separator for readable output.
+
+1️6️ Display matched sentences with their distance scores indicating similarity.
